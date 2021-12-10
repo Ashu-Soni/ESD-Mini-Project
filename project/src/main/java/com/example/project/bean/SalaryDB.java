@@ -11,7 +11,7 @@ public class SalaryDB implements Serializable {
     private Integer id;
 
     @Column(nullable = false)
-    private String user_id;
+    private int user_id;
 
     @Column
     private String department;
@@ -22,7 +22,32 @@ public class SalaryDB implements Serializable {
     @Column
     private String month;
 
-    public SalaryDB(String user_id, String department, String name, String month, String basic, String HRA, String LTA, String others, String PF, String tax, String net_pay) {
+    @Column
+    private int basic;
+
+    @Column
+    private int HRA;
+
+    @Column
+    private int LTA;
+
+    @Column
+    private int others;
+
+    @Column
+    private int PF;
+
+    @Column
+    private int tax;
+
+    @Column
+    private int net_pay;
+
+    public SalaryDB() {
+
+    }
+
+    public SalaryDB(int user_id, String department, String name, String month, int basic, int HRA, int LTA, int others, int PF, int tax, int net_pay) {
         this.user_id = user_id;
         this.department = department;
         this.name = name;
@@ -36,32 +61,7 @@ public class SalaryDB implements Serializable {
         this.net_pay = net_pay;
     }
 
-    @Column
-    private String basic;
-
-    @Column
-    private String HRA;
-
-    @Column
-    private String LTA;
-
-    @Column
-    private String others;
-
-    @Column
-    private String PF;
-
-    @Column
-    private String tax;
-
-    @Column
-    private String net_pay;
-
-    public SalaryDB() {
-
-    }
-
-    public String getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
@@ -77,31 +77,31 @@ public class SalaryDB implements Serializable {
         return month;
     }
 
-    public String getBasic() {
+    public int getBasic() {
         return basic;
     }
 
-    public String getHRA() {
+    public int getHRA() {
         return HRA;
     }
 
-    public String getLTA() {
+    public int getLTA() {
         return LTA;
     }
 
-    public String getOthers() {
+    public int getOthers() {
         return others;
     }
 
-    public String getPF() {
+    public int getPF() {
         return PF;
     }
 
-    public String getTax() {
+    public int getTax() {
         return tax;
     }
 
-    public String getNet_pay() {
+    public int getNet_pay() {
         return net_pay;
     }
 }

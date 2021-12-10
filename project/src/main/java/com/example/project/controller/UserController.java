@@ -3,15 +3,12 @@ package com.example.project.controller;
 import com.example.project.Service.UserService;
 import com.example.project.bean.Users;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.net.URISyntaxException;
 
-@Path("users")
+@Path("/users")
 public class UserController {
 
     @POST
@@ -24,5 +21,17 @@ public class UserController {
             return Response.ok().entity(val).build();
         else
             return Response.status(404).entity("Invalid Username or password").build();
+    }
+
+    @GET
+    @Path("/get_salary_info")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.TEXT_PLAIN)
+    public Response getSalaryInfo(String u_id) throws URISyntaxException{
+        Users user = UserService.getSalaryInfo(u_id);
+        if (user==null)
+            return Response.noContent().build();
+        else
+            return Response.ok().entity(user).build();
     }
 }

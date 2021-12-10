@@ -8,7 +8,7 @@ import java.util.List;
 public class SalaryDBService {
     static SalaryDBDAOImpl SalaryDBDAO = new SalaryDBDAOImpl();
 
-    public static List<SalaryDB> getSalaries(String u_id){
+    public static List<SalaryDB> getSalaries(int u_id){
         return SalaryDBDAO.getSalaries(u_id);
     }
 }

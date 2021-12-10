@@ -14,13 +14,14 @@ import java.util.List;
 public class SalaryDBDAOImpl implements SalaryDBDAO {
 
     @Override
-    public List<SalaryDB> getSalaries(String u_id) {
+    public List<SalaryDB> getSalaries(int u_id) {
         try (Session session = HibernateSessionUtil.getSession()) {
             Transaction t = session.beginTransaction();
 
             String hql="FROM SalaryDB WHERE user_id="+u_id;
+            System.out.println(hql);
             Query q=session.createQuery(hql);
-            List<SalaryDB> salaries= (List<SalaryDB>) q.getSingleResult();
+            List<SalaryDB> salaries= (List<SalaryDB>) q.list();
 
             t.commit();
             session.close();
