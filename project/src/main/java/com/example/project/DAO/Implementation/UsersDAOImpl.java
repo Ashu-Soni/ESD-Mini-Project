@@ -22,12 +22,10 @@ public class UsersDAOImpl implements UserDAO {
             String password=user.getPassword();
             System.out.println(username+" "+password);
 
-            String hql="FROM UserInfo WHERE username="+"'"+username+"'";
-            System.out.println(hql);
-            Query q=session.createQuery(hql);
+            Query q=session.createQuery("FROM Users WHERE username= :username and password=:pass");
+            q.setParameter("username", username);
+            q.setParameter("pass", password);
             List<Users> users= (List<Users>) q.list();
-
-            System.out.println(users.get(0).getUser_id());
 
             t.commit();
             session.close();
@@ -39,13 +37,15 @@ public class UsersDAOImpl implements UserDAO {
     }
 
     @Override
-    public Users getSalaryInfo(String u_id) {
+    public Users getSalaryInfo(int u_id) {
         try (Session session = HibernateSessionUtil.getSession()) {
             Transaction t = session.beginTransaction();
 
-            String hql="FROM SalaryInfo WHERE user_id="+u_id;
-            Query q=session.createQuery(hql);
-            Users user= (Users) q.getSingleResult();
+            System.out.println(u_id);
+            Query q=session.createQuery("FROM Users WHERE user_id=:user_id");
+            q.setParameter("user_id", u_id);
+            System.out.println(q);
+            Users user= (Users) q.list().get(0);
 
             t.commit();
             session.close();

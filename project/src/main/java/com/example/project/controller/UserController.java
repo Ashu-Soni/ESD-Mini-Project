@@ -23,11 +23,11 @@ public class UserController {
             return Response.status(404).entity("Invalid Username or password").build();
     }
 
-    @GET
+    @POST
     @Path("/get_salary_info")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.TEXT_PLAIN)
-    public Response getSalaryInfo(String u_id) throws URISyntaxException{
+    public Response getSalaryInfo(int u_id) throws URISyntaxException{
         Users user = UserService.getSalaryInfo(u_id);
         if (user==null)
             return Response.noContent().build();

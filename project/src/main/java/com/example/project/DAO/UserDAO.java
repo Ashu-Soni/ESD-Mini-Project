@@ -4,5 +4,5 @@ import com.example.project.bean.Users;
 
 public interface UserDAO {
     int login (Users user);
-    public Users getSalaryInfo(String u_id);
+    public Users getSalaryInfo(int u_id);
 }

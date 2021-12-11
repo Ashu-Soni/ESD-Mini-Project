@@ -10,7 +10,7 @@ public class UserService {
         return usersDAO.login(user);
     }
 
-    public static Users getSalaryInfo(String u_id){
+    public static Users getSalaryInfo(int u_id){
         return usersDAO.getSalaryInfo(u_id);
     }
 }
