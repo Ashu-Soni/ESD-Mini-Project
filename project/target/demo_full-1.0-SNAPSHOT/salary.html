@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Table V03</title>
+	<title>Academic ERP Faculty Salary</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/Home.css">
 
 	<script>
 		async function getSalaryInfo() {
@@ -32,9 +33,13 @@
 				console.log("Error occured while getting salary information")
 			}
 		}
+
+		function back(){
+			location.href = "http://localhost:8085/project_war/Home.html";
+		}
 	</script>
-<!--===============================================================================================-->
 </head>
+
 <body>
 	
 	<div class="limiter">
@@ -62,9 +67,17 @@
 						</tbody>
 					</table>
 
-					<button id="salary-info" type="salary" onclick=getSalaryInfo()>
-						Get
-					</button>
+					<div class="container">
+						<ul class="nav nav-pills nav-justified">
+							<button class="btn btn-lg btn-primary btn-block" id="get_salary" type="salary" onclick=getSalaryInfo()>
+								Get
+							</button>
+
+							<button class="btn btn-lg btn-primary btn-block" id="back" type="salary" onclick=back()>
+								Back
+							</button>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

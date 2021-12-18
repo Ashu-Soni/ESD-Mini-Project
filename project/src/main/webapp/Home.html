@@ -14,6 +14,12 @@
         function salaryDis() {
             location.href = `http://localhost:8085/project_war/disbursement.html`;
         }
+
+        function logout(){
+            sessionStorage.clear();
+            window.alert("Logged out Successfully");
+            location.href = "http://localhost:8085/project_war/index.html";
+        }
     </script>
 
 </head>
