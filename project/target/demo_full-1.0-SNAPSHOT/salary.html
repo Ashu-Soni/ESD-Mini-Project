@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Table V03</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="assets/css/util.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+	<script>
+		async function getSalaryInfo() {
+			console.log("getting salary information");
+
+			let response = await fetch('api/users/get_salary_info/'+100, {
+				method: 'GET'
+			});
+
+			try{
+				console.log("Response Received");
+				let employee = await response.json(); // read response body and parse as JSON
+				console.log(employee);
+				console.log(employee.name)
+				console.log(employee.username)
+
+				let table = document.getElementById("salary-table");
+				table.rows[1].cells[0].innerHTML=employee.name;
+				table.rows[1].cells[1].innerHTML=employee.username;
+				table.rows[1].cells[2].innerHTML=employee.department;
+				table.rows[1].cells[3].innerHTML=employee.email;
+				table.rows[1].cells[4].innerHTML=employee.salary;
+			}catch (err){
+				console.log("Error occured while getting salary information")
+			}
+		}
+	</script>
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100 ver1 m-b-110">
+					<table data-vertable="ver1" id="salary-table">
+						<thead>
+							<tr class="row100 head">
+								<th class="column100 column2" id="name">Name</th>
+								<th class="column100 column3" id="username">Username</th>
+								<th class="column100 column3" id="department">Department</th>
+								<th class="column100 column4" id="email">Email</th>
+								<th class="column100 column5" id="salary">Salary</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="row100">
+								<td class="column100 column1" data-column="column1"></td>
+								<td class="column100 column2" data-column="column2"></td>
+								<td class="column100 column3" data-column="column3"></td>
+								<td class="column100 column4" data-column="column4"></td>
+								<td class="column100 column5" data-column="column5"></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<button id="salary-info" type="salary" onclick=getSalaryInfo()>
+						Get
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -25,10 +25,14 @@ public class UsersDAOImpl implements UserDAO {
             Query q=session.createQuery("FROM Users WHERE username= :username and password=:pass");
             q.setParameter("username", username);
             q.setParameter("pass", password);
+            if(q.list().size()==0){
+                return -1;
+            }
             List<Users> users= (List<Users>) q.list();
 
             t.commit();
             session.close();
+
             return users.get(0).getUser_id();
         } catch (HibernateException exception) {
             System.out.print(exception.getLocalizedMessage());

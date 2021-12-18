@@ -9,14 +9,13 @@ import javax.ws.rs.core.Response;
 import java.net.URISyntaxException;
 import java.util.List;
 
-@Path("/salarydb")
+@Path("/salaryDB")
 public class SalaryDBController {
 
     @GET
-    @Path("/get_all_salaries")
+    @Path("/get_all_salaries/{user_id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.TEXT_PLAIN)
-    public Response getAllSalaries(int u_id) throws URISyntaxException{
+    public Response getAllSalaries(@PathParam("user_id") int u_id) throws URISyntaxException{
         System.out.println(u_id);
         List<SalaryDB> salaries = SalaryDBService.getSalaries(u_id);
         if (salaries==null)

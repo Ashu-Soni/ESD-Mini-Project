@@ -13,22 +13,24 @@ public class UserController {
 
     @POST
     @Path("/login")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response login(Users user) throws URISyntaxException{
+    public Response login(Users user) {
         int val = new UserService().login(user);
+        System.out.println(val);
         if (val != -1)
-            return Response.ok().entity(val).build();
+            return Response.status(200).entity(val).build();
         else
             return Response.status(404).entity("Invalid Username or password").build();
     }
 
-    @POST
-    @Path("/get_salary_info")
+    @GET
+    @Path("/get_salary_info/{user_id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.TEXT_PLAIN)
-    public Response getSalaryInfo(int u_id) throws URISyntaxException{
+    public Response getSalaryInfo(@PathParam("user_id") int u_id){
+        System.out.println(u_id);
         Users user = UserService.getSalaryInfo(u_id);
+        System.out.println(user);
         if (user==null)
             return Response.noContent().build();
         else

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Academic ERP Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/bootstrap1.min.css">
+    <link rel="stylesheet" href="assets/css/Home.css">
+    <script>
+        function getSalaryInfo() {
+            location.href = `http://localhost:8085/project_war/salary.html`;
+        }
+
+        function salaryDis() {
+            location.href = `http://localhost:8085/project_war/disbursement.html`;
+        }
+    </script>
+
+</head>
+
+<body>
+    <main>
+        <div class="container">
+
+            <ul class="nav nav-pills nav-justified">
+                <button class="btn btn-lg btn-primary btn-block" id="salary-info" type="salary" onclick=getSalaryInfo()>
+                    Salary Information
+                </button>
+                <button class="btn btn-lg btn-primary btn-block" id="salary-disbursement" type="salary-dis" onclick="salaryDis()">
+                    Salary Disbursement
+                </button>
+                <button class="btn btn-lg btn-primary btn-block" id="logout" type="logout" onclick=logout()>
+                    Logout
+                </button>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
