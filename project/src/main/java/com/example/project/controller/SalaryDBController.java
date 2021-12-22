@@ -23,4 +23,17 @@ public class SalaryDBController {
         else
             return Response.ok().entity(salaries).build();
     }
+
+    @POST
+    @Path("")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response addSalarieDis(SalaryDB salary) throws URISyntaxException{
+        System.out.println(u_id);
+        List<SalaryDB> salaries = SalaryDBService.getSalaries(u_id);
+        if (salaries==null)
+            return Response.noContent().build();
+        else
+            return Response.ok().entity(salaries).build();
+    }
 }
